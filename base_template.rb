@@ -8,7 +8,7 @@ plugin "rspec-rails", :git => "git://github.com/dchelimsky/rspec-rails.git"
 generate :rspec
 plugin "make_resourceful", :git => "git://github.com/hcatlin/make_resourceful.git"
 # Use cnaths fork of Restful Authentication as it allows emails to be used instead of logins and the views are HAML 
-plugin "restful_authentication", :git => "git://github.com/cnaths/restful-authentication.git"
+plugin "restful_authentication", :git => "git://github.com/crofty/restful-authentication-with-email.git"
 plugin "rspec_haml_scaffold_generator", :git => "git://github.com/crofty/rspec-haml-scaffold-generator.git"
 
 # ====================
