@@ -100,7 +100,13 @@ end
 #====================
 # JQuery
 #====================
-run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js > public/javascripts/jquery-1.3.1.min.js"
+run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js > public/javascripts/jquery.js"
+
+#====================
+# Stylesheet
+#====================
+run "mkdir public/stylesheets/sass"
+
 
 # ====================
 # FINALIZE
@@ -109,7 +115,6 @@ run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js > public/j
 run 'find . \( -type d -empty \) -and \( -not -regex ./\.git.* \) -exec touch {}/.gitignore \;'
 run "cp config/database.yml config/example_database.yml"
 run "rm public/index.html"
-run "touch public/stylesheets/screen.css"
 git :init
 git :add => "."
 git :commit => "-m 'initial commit'"

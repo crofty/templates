@@ -1,0 +1,14 @@
+!!!
+%html
+  = render :partial => 'layouts/head'
+  %body{ :class => body_class }
+    .body-content
+      .container
+        - if flash.any?
+          .flash
+            - flash.each do |key, value|
+              %div{ :id => "flash_#{key}", :class => key }
+                %p.flash_note= value
+        = yield
+    #footer
+
