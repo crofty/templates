@@ -106,7 +106,14 @@ run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js > public/j
 # Stylesheet
 #====================
 run "mkdir public/stylesheets/sass"
+run "curl -L http://github.com/crofty/templates.git/public/stylesheets/reset.css > public/stylesheets/reset.css"
+run "curl -L http://github.com/crofty/templates.git/public/stylesheets/sass/screen.sass > public/stylesheets/sass/screen.sass"
 
+#====================
+# Layouts
+#====================
+run "curl -L http://github.com/crofty/templates.git/app/views/layouts/application.html.haml > app/views/layouts/application.html.haml"
+run "curl -L http://github.com/crofty/templates.git/app/views/layouts/_head.html.haml > app/views/layouts/_head.html.haml"
 
 # ====================
 # FINALIZE
