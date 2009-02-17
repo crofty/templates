@@ -31,6 +31,7 @@ gem 'thoughtbot-shoulda',
   :lib => 'shoulda',
   :source => 'http://gems.github.com',
   :version => '>= 2.0.5'
+gem 'cucumber'
 
 run 'haml --rails .'
 rake "gems:install", :sudo => true
