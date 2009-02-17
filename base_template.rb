@@ -32,7 +32,9 @@ gem 'thoughtbot-shoulda',
   :source => 'http://gems.github.com',
   :version => '>= 2.0.5'
 gem 'cucumber'
+gem 'webrat'
 
+generate "cucumber"
 run 'haml --rails .'
 rake "gems:install", :sudo => true
 rake "gems:unpack"
