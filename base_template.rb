@@ -10,6 +10,7 @@ plugin "make_resourceful", :git => "git://github.com/hcatlin/make_resourceful.gi
 # Use cnaths fork of Restful Authentication as it allows emails to be used instead of logins and the views are HAML 
 plugin "restful_authentication", :git => "git://github.com/crofty/restful-authentication-with-email.git"
 plugin "rspec_haml_scaffold_generator", :git => "git://github.com/crofty/rspec-haml-scaffold-generator.git"
+plugin "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # ====================
 # CONFIG
@@ -26,7 +27,7 @@ gem 'mislav-will_paginate',
 gem 'thoughtbot-factory_girl',
   :lib => 'factory_girl',
   :source => 'http://gems.github.com',
-  :version => '>= 1.1.3'
+  :version => '>= 1.2.0'
 gem 'thoughtbot-shoulda',
   :lib => 'shoulda',
   :source => 'http://gems.github.com',
