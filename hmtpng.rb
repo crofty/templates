@@ -42,9 +42,11 @@ rake "gems:unpack"
 # Generators
 #====================
 generate :cucumber
-generate :nifty_scaffold, "user username:string email:string password:string new edit"
+generate :nifty_layout
+generate :nifty_scaffold, "user email:string password:string new edit"
 generate :session, "user_session"
-generate :nifty_scaffold, "user_session --skip-model username:string password:string new destroy"
+generate :nifty_scaffold, "user_session --skip-model email:string password:string new destroy"
+generate :controller, "home"
 
 #====================
 # User model
@@ -69,12 +71,6 @@ rake "db:test:clone"
 run "mkdir public/stylesheets/sass"
 run "curl -L http://github.com/crofty/templates.git/public/stylesheets/reset.css > public/stylesheets/reset.css"
 run "curl -L http://github.com/crofty/templates.git/public/stylesheets/sass/screen.sass > public/stylesheets/sass/screen.sass"
-
-#====================
-# Layouts
-#====================
-run "curl -L http://github.com/crofty/templates.git/app/views/layouts/application.html.haml > app/views/layouts/application.html.haml"
-run "curl -L http://github.com/crofty/templates.git/app/views/layouts/_head.html.haml > app/views/layouts/_head.html.haml"
 
 #====================
 # JQuery
