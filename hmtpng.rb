@@ -6,9 +6,10 @@
 #====================
 # TODO
 #====================
-# Add the HOST constant to each of the environment files
-
-
+# Edit user migration: remove password field and replace with a crypted_password field and a salt field.  Also add a persistence_token field
+# Run rake db:migrate
+# Change the user form so that it uses a password field and has a password confirmation field
+# Change the destroy action of the user_sessions controller so the the find is done without an id UserSession.find
 
 run "> README"
 
@@ -29,10 +30,7 @@ gem 'thoughtbot-shoulda',
   :lib => 'shoulda',
   :source => 'http://gems.github.com',
   :version => '>= 2.0.5'
-gem "thoughtbot-clearance",
-  :lib     => 'clearance',
-  :source  => 'http://gems.github.com',
-  :version => '0.8.2'
+gem "authlogic"
 gem 'cucumber'
 gem 'webrat'
 
@@ -43,8 +41,20 @@ rake "gems:unpack"
 #====================
 # Generators
 #====================
-generate :clearance
 generate :cucumber
+generate :nifty_scaffold, "user username:string email:string password:string new edit"
+generate :session, "user_session"
+generate :nifty_scaffold, "user_session --skip-model username:string password:string new destroy"
+
+#====================
+# User model
+#====================
+file 'app/models/user.rb',
+%q{
+class User < ActiveRecord::Base
+  acts_as_authentic
+end
+}
 
 #====================
 # DATABASE
@@ -70,6 +80,13 @@ run "curl -L http://github.com/crofty/templates.git/app/views/layouts/_head.html
 # JQuery
 #====================
 run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js > public/javascripts/jquery.js"
+
+#====================
+# Routes
+#====================
+route "map.root :controller => 'home'"
+route "map.login 'login', :controller => 'user_sessions', :action=> 'new' "
+route "map.login 'logout', :controller => 'user_sessions', :action=> 'destroy' "
 
 # ====================
 # FINALIZE
