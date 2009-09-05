@@ -1,3 +1,7 @@
+#====================
+# Usage
+#====================
+# rails hmtpng -m http://github.com/crofty/templates.git/hmtpng.rb
 
 #====================
 # TODO
@@ -25,7 +29,6 @@ gem 'thoughtbot-shoulda',
   :lib => 'shoulda',
   :source => 'http://gems.github.com',
   :version => '>= 2.0.5'
-gem 'thoughtbot-quietbacktrace'
 gem "thoughtbot-clearance",
   :lib     => 'clearance',
   :source  => 'http://gems.github.com',
