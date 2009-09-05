@@ -43,10 +43,10 @@ rake "gems:unpack"
 #====================
 generate :cucumber
 generate :nifty_layout
-generate :nifty_scaffold, "user email:string password:string new edit"
+generate :nifty_scaffold, "user email:string password:string"
 generate :session, "user_session"
 generate :nifty_scaffold, "user_session --skip-model email:string password:string new destroy"
-generate :controller, "home"
+generate :nifty_scaffold, "home index"
 
 #====================
 # User model
@@ -55,6 +55,38 @@ file 'app/models/user.rb',
 %q{
 class User < ActiveRecord::Base
   acts_as_authentic
+end
+}
+
+#====================
+# Application Controller
+#====================
+file 'app/controllers/application_controller.rb',
+%q{
+# Filters added to this controller apply to all controllers in the application.
+# Likewise, all the methods added will be available for all controllers.
+
+class ApplicationController < ActionController::Base
+  helper :all # include all helpers, all the time
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+
+  # Scrub sensitive parameters from your log
+  # filter_parameter_logging :password
+
+  helper_method :current_user
+
+  private
+
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
+
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.record
+  end
+
 end
 }
 
@@ -80,7 +112,7 @@ run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js > public/j
 #====================
 route "map.root :controller => 'home'"
 route "map.login 'login', :controller => 'user_sessions', :action=> 'new' "
-route "map.login 'logout', :controller => 'user_sessions', :action=> 'destroy' "
+route "map.logout 'logout', :controller => 'user_sessions', :action=> 'destroy' "
 
 # ====================
 # FINALIZE
