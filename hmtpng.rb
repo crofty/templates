@@ -31,8 +31,8 @@ gem 'thoughtbot-shoulda',
   :source => 'http://gems.github.com',
   :version => '>= 2.0.5'
 gem "authlogic"
-gem 'cucumber'
-gem 'webrat'
+#gem 'cucumber'
+#gem 'webrat'
 
 run 'haml --rails .'
 rake "gems:install", :sudo => true
@@ -43,7 +43,7 @@ rake "gems:unpack"
 #====================
 generate :cucumber
 generate :nifty_layout
-generate :nifty_scaffold, "user email:string password:string"
+generate :nifty_scaffold, "user email:string password:string username:string blurb:string website:string "
 generate :session, "user_session"
 generate :nifty_scaffold, "user_session --skip-model email:string password:string new destroy"
 generate :nifty_scaffold, "home index"
