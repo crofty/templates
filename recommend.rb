@@ -1,7 +1,7 @@
 #====================
 # Usage
 #====================
-# rails hmtpng -m http://github.com/crofty/templates.git/hmtpng.rb
+# rails hmtpng -m http://github.com/crofty/templates.git/recommend.rb -f -d=mysql
 
 #====================
 # TODO
@@ -16,7 +16,6 @@ run "> README"
 #====================
 # GEMS
 #====================
-gem 'RedCloth', :lib => 'redcloth', :version => '~> 3.0.4'
 gem 'mislav-will_paginate',
   :lib => 'will_paginate',
   :source => 'http://gems.github.com',
@@ -26,10 +25,6 @@ gem 'thoughtbot-factory_girl',
   :lib => 'factory_girl',
   :source => 'http://gems.github.com',
   :version => '>= 1.2.0'
-gem 'thoughtbot-shoulda',
-  :lib => 'shoulda',
-  :source => 'http://gems.github.com',
-  :version => '>= 2.0.5'
 gem "authlogic"
 #gem 'cucumber'
 #gem 'webrat'
