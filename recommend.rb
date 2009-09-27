@@ -1,7 +1,7 @@
 #====================
 # Usage
 #====================
-# rails hmtpng -m http://github.com/crofty/templates.git/recommend.rb -f -d=mysql
+# rails endless-rotation -m http://github.com/crofty/templates.git/recommend.rb -f -d=mysql
 
 #====================
 # TODO
