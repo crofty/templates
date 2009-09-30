@@ -1,7 +1,7 @@
 #====================
 # Usage
 #====================
-# rails endless-rotation -m http://github.com/crofty/templates.git/recommend.rb -f -d=mysql
+# rails endless-rotation -m http://github.com/crofty/templates.git/recommend.rb --freeze --database=mysql
 
 #====================
 # TODO
@@ -38,7 +38,7 @@ rake "gems:unpack"
 #====================
 generate :cucumber
 generate :nifty_layout
-generate :nifty_scaffold, "user email:string password:string username:string blurb:string website:string "
+generate :nifty_scaffold, "user email:string password:string"
 generate :session, "user_session"
 generate :nifty_scaffold, "user_session --skip-model email:string password:string new destroy"
 generate :controller, "home"
@@ -50,6 +50,12 @@ file 'app/models/user.rb',
 %q{
 class User < ActiveRecord::Base
   acts_as_authentic
+end
+}
+file 'app/models/user.rb',
+%q{
+class UserSession < Authlogic::Session::Base
+  find_by_login_method :find_by_email
 end
 }
 
